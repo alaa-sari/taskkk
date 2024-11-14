@@ -22,8 +22,6 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip  # Upgrade pip to ensure it's the latest
-          python -m pip install -r requirements.txt  # Install dependencies from requirements.txt
-          installatin command (if any)
       - name: Run tests
         run: |
           python -m unittest discover -s tests -p "*.py"  # Run all tests in the "tests" folder (or adjust as needed)
