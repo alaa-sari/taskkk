@@ -1,0 +1,41 @@
+name: Test Calculator
+
+on:
+  push:
+    branches: [ "main" ]  # Adjusted to your main branch
+  pull_request:
+    branches: [ "main" ]  # Adjusted to your main branch
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Running on the latest Ubuntu runner
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2  # Check out the repository code
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"  # Replace with the desired Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip  # Upgrade pip to ensure it's the latest
+          python -m pip install -r requirements.txt  # Install dependencies from requirements.txt
+          installatin command (if any)
+      - name: Run tests
+        run: |
+          python -m unittest discover -s tests -p "*.py"  # Run all tests in the "tests" folder (or adjust as needed)
+
+  deploy:
+    needs: test  # The deploy job runs only after the test job has completed successfully
+    runs-on: ubuntu-latest
+    #if: ${{always()}} 
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Deploy Application
+        run: |
+          echo "Deploying the application..."  # Replace with actual deployment commands
