@@ -24,7 +24,7 @@ jobs:
           python -m pip install --upgrade pip  # Upgrade pip to ensure it's the latest
       - name: Run tests
         run: |
-          python -m unittest discover -s tests -p "*.py"  # Run all tests in the "tests" folder (or adjust as needed)
+          python -m unittest test.py  # Run all tests in the "tests" folder (or adjust as needed)
 
   deploy:
     needs: test  # The deploy job runs only after the test job has completed successfully
