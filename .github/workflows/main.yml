@@ -31,7 +31,7 @@ jobs:
   deploy:
     needs: test  # The deploy job runs only after the test job has completed successfully
     runs-on: ubuntu-latest
-    #if: ${{always()}} 
+    if: ${{always()}} 
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
